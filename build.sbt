@@ -31,8 +31,6 @@ organization := "uk.gov.voa"
 
 scalaVersion := "2.11.7"
 
-version := "1.0.0"
-
 enablePlugins(SbtAutoBuildPlugin, SbtGitVersioning)
 
 libraryDependencies ++= Seq(

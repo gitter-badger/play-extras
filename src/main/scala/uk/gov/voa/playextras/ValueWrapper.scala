@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Valuation Office Agency
+ * Copyright 2015 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,18 @@
 package uk.gov.voa.playextras
 
 /**
- * Define a type class that can take a value of type V and wrap it in an
- * instance of type W, and take a W and unwrap it to a V
+ * Defines an interface that can take a value of type V and wrap it in an
+ * instance of type W, and take a W and unwrap it to a V.
  *
  * For example, if W is `case class Foo(value:String) extends AnyVal` then
  * we can create an instance of ValueWrapper as:
  *
- * ```implicit val FooValueWrapper extends ValueWrapper[String, Foo] {
- * def wrap(v:String) : Either[String, Foo] = Right(Foo(v))
- * def unwrap(f:Foo) = foo.value
- * }```
+ * {{{
+ * implicit val FooValueWrapper extends ValueWrapper[String, Foo] {
+ *   def wrap(v:String) : Either[String, Foo] = Right(Foo(v))
+ *   def unwrap(f:Foo) = foo.value
+ * }
+ * }}}
  *
  * The `wrap` method returns `Either[String, W]` to allow for situations where
  * the V being passed in cannot be converted to a W.
@@ -48,7 +50,3 @@ trait ValueWrapper[V, W] {
 
   def unwrap(w: W): V
 }
-
-
-
-
